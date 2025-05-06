@@ -1,26 +1,50 @@
 @import "tailwindcss";
+/* @import "tw-animate-css"; */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+
+
+@font-face {
+    font-family: 'Canva Sans';
+    src: url("/fonts/CanvaSans-Bold.woff2") format("woff2"), url("/fonts/CanvaSans-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+    font-family: 'Canva Sans';
+    src: url("/fonts/CanvaSans-Medium.woff2") format("woff2"), url("/fonts/CanvaSans-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+    font-family: 'Canva Sans';
+    src: url("/fonts/CanvaSans-Regular.woff2") format("woff2"), url("/fonts/CanvaSans-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+    font-family: 'Canva Sans Display';
+    src: url("/fonts/CanvaSansDisplay-Bold.woff2") format("woff2"), url("/fonts/CanvaSansDisplay-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap
+}
+
+
+@theme {
+    --color-sit-yellow: #FAAB08;
+    --color-sit-red: #E9485A;
+    --color-sit-light-blue: #0193D8;
+    --color-sit-dark-blue: #01388B;
+    --color-sit-gray: #4A5565;
+    --pattern-fg: #4A5565;
+    --Canva-Sans: 'Canva Sans';
+    --Canva-Sans-Display: 'Canva Sans Display';
+
 }
