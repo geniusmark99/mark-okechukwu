@@ -58,7 +58,7 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
          dark:[--pattern-fg:var(--color-white)]/10 w-[30px] left-0 h-auto">
                     </div>
 
-                    <div className="w-full px-2 md:px-2 mt-3">
+                    <div className="w-full mt-3">
                         {children}
 
                     </div>
