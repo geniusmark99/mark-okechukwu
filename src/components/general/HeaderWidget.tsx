@@ -8,6 +8,16 @@ const HeaderWidget = () => {
     const pathname = usePathname();
     const [isMobileBarOpen, setIsMobileBarOpen] = useState(false);
 
+
+    const handleClick = () => {
+        const phoneNumber = '+2348141625004';
+        const message = 'Hi! Mark, I need your Professional Services';
+        const encodedMessage = encodeURIComponent(message);
+        const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(url, '_blank');
+    };
+
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -112,7 +122,9 @@ const HeaderWidget = () => {
                 </div>
 
                 <div className='w-auto flex items-center gap-x-2'>
-                    <button className='block py-1.5 md:py-2 px-3 text-sm md:text-[0.9rem] md:px-4 rounded-full border border-white bg-white hover:bg-black hover:text-white transition'>Coming soon...</button>
+                    <button onClick={handleClick} className='block py-1.5 md:py-2 px-3 text-sm md:text-[0.9rem] md:px-4 rounded-full border border-white bg-white hover:bg-black hover:text-white transition'>Contact me</button>
+
+
                 </div>
             </div >
 

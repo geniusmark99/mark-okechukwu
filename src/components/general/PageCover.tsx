@@ -74,8 +74,6 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
 
     //         if (isCtrlShiftI || isF11 || isCtrlS || isF12) {
     //             event.preventDefault();
-    //             setIsPopupVisible(true);
-
 
     //             const syntheticEvent = {
     //                 preventDefault: () => { },

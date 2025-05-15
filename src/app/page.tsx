@@ -31,7 +31,7 @@ export default function Home() {
     {
       title: "UI/UX Design",
       subtitle: "Crafting intuitive, engaging interfaces",
-      tools: ["Figma", "Adobe XD", "Sketch", " InVision"],
+      tools: ["Figma", "Sketch", " InVision"],
       // bg: "bg-gradient-to-r from-pink-400 to-purple-500",
     },
     {
@@ -193,7 +193,7 @@ export default function Home() {
             <div className=" flex justify-center items-center ">
               <Image data-scroll data-scroll-speed="2" priority width={1500} height={1500} alt="Mark Okechukwu post" src="/images/picture.png" className="min-w-[500px] w-[900px] md:w-auto" draggable="false" />
 
-              <button className="animate-bounce absolute bottom-[100px] md:bottom-20">
+              <button className="animate-bounce absolute bottom-[150px] md:bottom-20">
                 <svg className="size-10 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" >
                   <path d="M23.970703 4.9726562 A 2.0002 2.0002 0 0 0 22 7L22 36.171875L11.414062 25.585938 A 2.0002 2.0002 0 1 0 8.5859375 28.414062L22.585938 42.414062 A 2.0002 2.0002 0 0 0 25.414062 42.414062L39.414062 28.414062 A 2.0002 2.0002 0 1 0 36.585938 25.585938L26 36.171875L26 7 A 2.0002 2.0002 0 0 0 23.970703 4.9726562 z" />
                 </svg>
@@ -226,7 +226,7 @@ export default function Home() {
 
 
           </div>
-          <div className="w-full md:w-6/12 bg-red-700 relative">
+          <div className="w-full md:w-6/12 relative">
 
             <Swiper
               modules={[EffectCoverflow, Autoplay]}
@@ -291,7 +291,10 @@ export default function Home() {
         <div className="h-auto w-full mt-10 flex flex-col items-center my-10 bg-black">
 
           <h1 data-scroll data-scroll-speed="2" className="text-2xl md:text-7xl font-semibold lg:max-w-[700px] mt-10  text-center uppercase">the service i provide</h1>
-          <p data-scroll data-scroll-speed="2" className="uppercase text-center md:leading-8 text-lg md:text-xl max-w-[700px] mt-4 ">Creating visual appealing and functional websites tailored to the client&apos;s need and goals,providing a consistent user experience across platforms</p>
+          <div className="flex justify-center text-center items-center">
+            <p data-scroll data-scroll-speed="2" className="uppercase md:text-center md:leading-8 text-lg md:text-xl max-w-[700px] mt-4 ">Creating visual appealing and functional websites tailored to the client&apos;s need and goals,providing a consistent user experience across platforms</p>
+
+          </div>
           <div className="mt-10 w-full max-w-4xl px-2">
             {items.map((item, index) => (
               <MenuItemWidget
@@ -357,30 +360,30 @@ export default function Home() {
         {/* mt-10 my-10 */}
         <div className="h-[50vh] relative lg:h-screen w-full  flex flex-col justify-center items-center  bg-white">
 
-          <p className="absolute text-xl  md:text-2xl top-0 md:top-2 bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">FIGMA</p>
-          <p className="absolute text-xl  md:text-2xl top-10 left-2 md:left-10 bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">LINKEDIN</p>
-          <p className="absolute text-xl  md:text-2xl top-15 md:top-20 right-2 md:right-10 bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">FACEBOOK</p>
-          <p className="absolute text-xl  md:text-2xl top-15 md:top-20 left-[40%] md:left-[30%] bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">GITHUB</p>
-          <p className="absolute text-xl  md:text-2xl top-32 md:top-20 right-[40%] md:right-[30%] bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">COMMUNITY</p>
+          <p className="absolute hidden md:block text-xl  md:text-2xl top-0 md:top-2 bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">FIGMA</p>
+          <p className="absolute hidden md:block text-xl  md:text-2xl top-10 left-2 md:left-10 bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">LINKEDIN</p>
+          <p className="absolute hidden md:block text-xl  md:text-2xl top-15 md:top-20 right-2 md:right-10 bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">FACEBOOK</p>
+          <p className="absolute hidden md:block text-xl  md:text-2xl top-15 md:top-20 left-[40%] md:left-[30%] bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">GITHUB</p>
+          <p className="absolute hidden md:block text-xl  md:text-2xl top-32 md:top-20 right-[40%] md:right-[30%] bg-clip-text text-transparent bg-linear-90 from-black/40 via-black to-black/40">COMMUNITY</p>
 
           <h1 data-scroll data-scroll-speed="2" className="text-5xl md:text-6xl lg:text-[9rem] bg-clip-text text-transparent bg-linear-90 from-black/50 via-black to-black/50 font-semibold">
             LET&apos;S TALK
           </h1>
 
           <div data-scroll data-scroll-direction="horizontal" className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-4 lg:mt-10">
-            <Link data-scroll-speed="3" href="/app" className="magnetic transition-all md:text-xl block px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
+            <Link data-scroll-speed="3" href="/app" className=" transition-all md:text-xl px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
               Instagram
             </Link>
 
-            <Link data-scroll-speed="4" href="/app" className="magnetic transition-all md:text-xl block px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
+            <Link data-scroll-speed="4" href="/app" className=" transition-all md:text-xl px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
               LINKEDIN
             </Link>
 
-            <Link data-scroll-speed="5" href="/app" className="magnetic transition-all md:text-xl block px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
+            <Link data-scroll-speed="5" href="/app" className=" transition-all md:text-xl px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
               WHATSAPP
             </Link>
 
-            <Link data-scroll-speed="6" href="/contact" className="magnetic transition-all md:text-xl block px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
+            <Link data-scroll-speed="6" href="/contact" className=" transition-all md:text-xl px-5 py-3 lg:py-4 rounded-full text-white hover:text-black tracking-wider bg-black hover:bg-transparent border-2 border-transparent hover:border-black text-center uppercase">
               CONTACT ME
             </Link>
           </div>
