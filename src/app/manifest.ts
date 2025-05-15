@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
     return {
         name: 'Mark Okechukwu',
-        short_name: 'Mark Okechukwu',
+        short_name: 'Mark',
         description: 'The Tech Genius',
         start_url: '/',
         display: 'standalone',

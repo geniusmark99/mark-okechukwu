@@ -1,5 +1,8 @@
 @import "tailwindcss";
+@import "mouse-follower/dist/mouse-follower.min.css";
+
 /* @import "tw-animate-css"; */
+
 
 
 
