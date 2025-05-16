@@ -27,42 +27,33 @@ export default function Home() {
     { number: 6, title: 'DESKTOP APP DESIGN' },
   ]
 
-  const slides = [
-    {
-      title: "UI/UX Design",
-      subtitle: "Crafting intuitive, engaging interfaces",
-      tools: ["Figma", "Sketch", " InVision"],
-      // bg: "bg-gradient-to-r from-pink-400 to-purple-500",
-    },
-    {
-      title: "Frontend Development",
-      subtitle: "Interactive, fast, pixel-perfect",
-      tools: ["TailwindCSS", "Next.js", " TypeScript",],
-      // bg: "bg-gradient-to-r from-blue-500 to-indigo-600",
-    },
-    {
-      title: "Backend Development",
-      subtitle: "Reliable, scalable, and secure",
-      tools: ["Node.js", "Laravel", "PostgreSQL"],
-      bg: "bg-gradient-to-r from-gray-700 to-black",
-    },
-    // {
-    //   title: "Machine Learning",
-    //   subtitle: "Teaching systems to learn and predict",
-    //   tools: ["Python", "TensorFlow", "scikit-learn"],
-    //   // bg: "bg-gradient-to-r from-yellow-400 to-red-500",
-    // },
-  ];
+  // const slides = [
+  //   {
+  //     title: "UI/UX Design",
+  //     subtitle: "Crafting intuitive, engaging interfaces",
+  //     tools: ["Figma", "Sketch", " InVision"],
+  //     // bg: "bg-gradient-to-r from-pink-400 to-purple-500",
+  //   },
+  //   {
+  //     title: "Frontend Development",
+  //     subtitle: "Interactive, fast, pixel-perfect",
+  //     tools: ["TailwindCSS", "Next.js", " TypeScript",],
+  //     // bg: "bg-gradient-to-r from-blue-500 to-indigo-600",
+  //   },
+  //   {
+  //     title: "Backend Development",
+  //     subtitle: "Reliable, scalable, and secure",
+  //     tools: ["Node.js", "Laravel", "PostgreSQL"],
+  //     bg: "bg-gradient-to-r from-gray-700 to-black",
+  //   },
+  //   // {
+  //   //   title: "Machine Learning",
+  //   //   subtitle: "Teaching systems to learn and predict",
+  //   //   tools: ["Python", "TensorFlow", "scikit-learn"],
+  //   //   // bg: "bg-gradient-to-r from-yellow-400 to-red-500",
+  //   // },
+  // ];
 
-  const getToolStyle = (index: number): React.CSSProperties => {
-    const styles = [
-      { top: '30%', left: '10%', transform: 'rotate(-15deg)', fontSize: "2.5rem" },
-      { top: '50%', left: '40%', transform: 'rotate(10deg)', fontSize: "1.5rem" },
-      { top: '70%', left: '75%', transform: 'rotate(-5deg)', fontSize: "1rem" },
-      { top: '80%', left: '5%', transform: 'rotate(-5deg)', fontSize: "1.5rem" },
-    ];
-    return styles[index] || {};
-  };
 
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -128,7 +119,7 @@ export default function Home() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 40 40"
             fill="none"
-            className="size-8 left-10 absolute top-0"
+            className="size-8 left-20 md:left-10 absolute top-0"
             aria-hidden="true"
             animate={{
               rotate: [0, -180],
@@ -172,7 +163,7 @@ export default function Home() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 40 40"
             fill="none"
-            className="size-10 absolute top-10 right-10 md:right-0 fill-white md:fill-black"
+            className="size-10 absolute top-10 right-20 md:right-0 fill-white md:fill-black"
             aria-hidden="true"
             animate={{
               rotate: [0, -180],
@@ -190,7 +181,7 @@ export default function Home() {
           </motion.svg>
           <div className="w-full md:w-6/12 relative h-screen">
 
-            <div className=" flex justify-center items-center ">
+            <div className=" flex justify-center items-center mt-10">
               <Image data-scroll data-scroll-speed="2" priority width={1500} height={1500} alt="Mark Okechukwu post" src="/images/picture.png" className="min-w-[500px] w-[900px] md:w-auto" draggable="false" />
 
               <button className="animate-bounce absolute bottom-[150px] md:bottom-20">
@@ -243,19 +234,36 @@ export default function Home() {
               className="h-[50vh] mx-10 md:h-screen"
 
             >
-              {slides.map((slide, index) => (
-                <SwiperSlide key={index} className={`w-80 h-96 p-6  text-black grid place-items-center  bg-white`}>
-                  {/* ${slide.bg} */}
-                  <h2 className="text-3xl md:text-4xl lg:text-6xl max-w-md  text-center font-bold">{slide.title}</h2>
-                  <p className="mt-2 text-xl md:text-2xl">{slide.subtitle}</p>
 
-                  <ul className="mt-4 space-y-1 grid grid-cols-3">
-                    {slide.tools.map((tool, idx) => (
-                      <li key={idx} className="text-sm absolute" style={getToolStyle(idx)}>{tool}</li>
-                    ))}
-                  </ul>
-                </SwiperSlide>
-              ))}
+              <SwiperSlide className={`w-80 h-96 p-6  text-white grid place-items-center  bg-black`}>
+                <div className="bg-[url('/vectors/ccchaos.svg')] w-full h-full absolute bg-no-repeat" ></div>
+                <h2 className="text-3xl md:text-4xl lg:text-6xl max-w-md  text-center font-bold">UI/UX</h2>
+                <p className="mt-2 text-xl md:text-2xl">Crafting intuitive, engaging interfaces</p>
+
+                <ul className="mt-4 space-y-1 grid grid-cols-3">
+                  <li className="absolute left-20  md:left-30 md:top-50 text-2xl font-semibold">Figma</li>
+                  <Image src="/images/video-thumb-10.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute top-30  lg:right-10" />
+
+                  <li className="absolute bottom-20 text-2xl font-semibold">Sketch</li>
+                  <Image src="/images/video-thumb-5.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute top-90 md:-left-10 lg:left-0 lg:right-10" />
+
+                  <li className="absolute right-20  md:right-30 md:bottom-100 text-2xl font-semibold">InVision</li>
+                  <Image src="/images/video-thumb-3.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute bottom-20 left-10" />
+                </ul>
+              </SwiperSlide>
+
+
+              {/* <SwiperSlide className={`w-80 h-96 p-6  text-black grid place-items-center  bg-white`}>
+                <h2 className="text-3xl md:text-4xl lg:text-6xl max-w-md  text-center font-bold">Frontend</h2>
+                <p className="mt-2 text-xl md:text-2xl">Crafting intuitive, engaging interfaces</p>
+
+                <ul className="mt-4 space-y-1 grid grid-cols-3">
+                  <li className="text-sm absolute">TailwindCSS</li>
+                  <li className="text-sm absolute">NextJS</li>
+                  <li className="text-sm absolute">TypeScript</li>
+                </ul>
+              </SwiperSlide> */}
+
             </Swiper>
 
           </div>
