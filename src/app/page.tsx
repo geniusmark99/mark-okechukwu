@@ -182,7 +182,7 @@ export default function Home() {
           <div className="w-full md:w-6/12 relative h-screen">
 
             <div className=" flex justify-center items-center mt-10">
-              <Image data-scroll data-scroll-speed="2" priority width={1500} height={1500} alt="Mark Okechukwu post" src="/images/picture.png" className="min-w-[500px] w-[900px] md:w-auto" draggable="false" />
+              <Image data-scroll data-scroll-speed="2" priority width={1000} height={1000} alt="Mark Okechukwu post" src="/images/mark-okechukwu.png" className="w-[300px] backdrop-grayscale-200 contrast-100" draggable="false" />
 
               <button className="animate-bounce absolute bottom-[150px] md:bottom-20">
                 <svg className="size-10 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" >
