@@ -1,9 +1,9 @@
 'use client'
 import Image from "next/image";
-import { PageCover, MenuItemWidget } from "@/components/general";
+import { PageCover, MenuItemWidget, ModalWidget } from "@/components/general";
 import { motion } from 'framer-motion';
 import Link from "next/link";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import gsap from "gsap";
@@ -17,15 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 
-
-  const items = [
-    { number: 1, title: 'UIUX' },
-    { number: 2, title: 'WEB DESIGN' },
-    { number: 3, title: 'LANDING PAGE DESIGN', isActive: true },
-    { number: 4, title: 'UI DESIGN FIGMA' },
-    { number: 5, title: 'MOBILE APP DESIGN' },
-    { number: 6, title: 'DESKTOP APP DESIGN' },
-  ]
 
   // const slides = [
   //   {
@@ -53,6 +44,17 @@ export default function Home() {
   //   //   // bg: "bg-gradient-to-r from-yellow-400 to-red-500",
   //   // },
   // ];
+
+
+
+  const items = [
+    { number: 1, title: "UIUX", content: "UIUX Content goes here..." },
+    { number: 2, title: "WEB DESIGN", content: "Web Design Details here..." },
+    { number: 3, title: "UI DESIGN FIGMA", content: "Figma design information..." },
+    { number: 4, title: "MOBILE APP DESIGN", content: "Mobile design overview..." },
+    { number: 5, title: "DESKTOP APP DESIGN", content: "Desktop design breakdown..." }
+  ]
+
 
 
 
@@ -84,8 +86,9 @@ export default function Home() {
     );
   }, []);
 
-  // const text = "MARK OKECHUKWU";
 
+
+  const [selectedItem, setSelectedItem] = useState<null | typeof items[0]>(null);
 
 
   return <>
@@ -182,13 +185,13 @@ export default function Home() {
           <div className="w-full md:w-6/12 relative h-screen">
 
             <div className=" flex justify-center items-center mt-10">
-              <Image data-scroll data-scroll-speed="2" priority width={1000} height={1000} alt="Mark Okechukwu post" src="/images/mark-okechukwu.png" className="w-[300px] backdrop-grayscale-200 contrast-100" draggable="false" />
+              <Image data-scroll data-scroll-speed="2" priority width={1200} height={1200} alt="Mark Okechukwu post" src="/images/mark-okechukwu-4.png" className="w-[400px] backdrop-grayscale-200 contrast-100" draggable="false" />
 
-              <button className="animate-bounce absolute bottom-[150px] md:bottom-20">
+              {/* <button className="animate-bounce absolute bottom-[150px] md:bottom-20">
                 <svg className="size-10 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" >
                   <path d="M23.970703 4.9726562 A 2.0002 2.0002 0 0 0 22 7L22 36.171875L11.414062 25.585938 A 2.0002 2.0002 0 1 0 8.5859375 28.414062L22.585938 42.414062 A 2.0002 2.0002 0 0 0 25.414062 42.414062L39.414062 28.414062 A 2.0002 2.0002 0 1 0 36.585938 25.585938L26 36.171875L26 7 A 2.0002 2.0002 0 0 0 23.970703 4.9726562 z" />
                 </svg>
-              </button>
+              </button> */}
             </div>
 
             {/* <div
@@ -252,20 +255,49 @@ export default function Home() {
                 </ul>
               </SwiperSlide>
 
-
-              {/* <SwiperSlide className={`w-80 h-96 p-6  text-black grid place-items-center  bg-white`}>
-                <h2 className="text-3xl md:text-4xl lg:text-6xl max-w-md  text-center font-bold">Frontend</h2>
-                <p className="mt-2 text-xl md:text-2xl">Crafting intuitive, engaging interfaces</p>
+              <SwiperSlide className={`w-80 h-96 p-6  text-white grid place-items-center  bg-black`}>
+                <div className="bg-[url('/vectors/ccchaos.svg')] w-full h-full absolute bg-no-repeat" ></div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl max-w-md  text-center font-bold">FRONTEND DEV</h2>
+                <p className="mt-2 text-xl md:text-2xl">Interactive, fast, pixel-perfect</p>
 
                 <ul className="mt-4 space-y-1 grid grid-cols-3">
-                  <li className="text-sm absolute">TailwindCSS</li>
-                  <li className="text-sm absolute">NextJS</li>
-                  <li className="text-sm absolute">TypeScript</li>
+                  <li className="absolute left-20  md:left-30 md:top-50 text-2xl font-semibold">TailwindCSS</li>
+                  <Image src="/images/video-thumb-10.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute top-30  lg:right-10" />
+
+                  <li className="absolute bottom-20 text-2xl font-semibold">NextJS</li>
+                  <Image src="/images/video-thumb-5.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute top-90 md:-left-10 lg:left-0 lg:right-10" />
+
+                  <li className="absolute right-20  md:right-30 md:bottom-100 text-2xl font-semibold">React Native</li>
+                  <Image src="/images/video-thumb-3.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute bottom-20 left-10" />
                 </ul>
-              </SwiperSlide> */}
+              </SwiperSlide>
+
+              <SwiperSlide className={`w-80 h-96 p-6  text-white grid place-items-center  bg-black`}>
+                <div className="bg-[url('/vectors/ccchaos.svg')] w-full h-full absolute bg-no-repeat" ></div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl max-w-md  text-center font-bold">BACKEND DEV</h2>
+                <p className="mt-2 text-xl md:text-2xl">Interactive, fast, pixel-perfect</p>
+
+                <ul className="mt-4 space-y-1 grid grid-cols-3">
+                  <li className="absolute left-20  md:left-30 md:top-50 text-2xl font-semibold">Node.js</li>
+                  <Image src="/images/video-thumb-10.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute top-30  lg:right-10" />
+
+                  <li className="absolute bottom-20 text-2xl font-semibold">PHP</li>
+                  <Image src="/images/video-thumb-5.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute top-90 md:-left-10 lg:left-0 lg:right-10" />
+
+                  <li className="absolute right-20  md:right-30 md:bottom-100 text-2xl font-semibold">LARAVEL</li>
+                  <Image src="/images/video-thumb-3.png" alt="Figma" data-scroll data-scroll-speed="2" width={200} height={200} className="absolute bottom-20 left-10" />
+                </ul>
+              </SwiperSlide>
+
+
 
             </Swiper>
 
+
+            <ModalWidget isOpen={!!selectedItem} onClose={() => setSelectedItem(null)}>
+              <h2 className="text-xl font-bold mb-2">{selectedItem?.title}</h2>
+              <p className="text-gray-700">{selectedItem?.content}</p>
+            </ModalWidget>
           </div>
 
         </div>
@@ -289,7 +321,7 @@ export default function Home() {
             </div>
 
             <div data-scroll data-scroll-speed="2" className="w-full md:w-6/12 flex justify-center">
-              <Image src="/images/picture-stand.png" alt="Standing image" width={600} height={600} className="w-[400px]" priority />
+              <Image src="/images/mark-okechukwu-3.png" alt="Standing image" width={1000} height={1000} className="w-[400px]" priority />
             </div>
           </div>
 
@@ -309,6 +341,7 @@ export default function Home() {
                 key={index}
                 number={item.number}
                 title={item.title}
+                onClick={() => setSelectedItem(item)}
               />
             ))}
 

@@ -73,7 +73,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                         className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
                                         href="#"
                                     >
-                                        About us
+                                        About me
                                     </a>
                                 </p>
                                 <p>
@@ -147,29 +147,9 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                         </div>
                         {/* End Col */}
                         <div>
-                            <h4 className="text-xs font-semibold text-gray-500 uppercase ">
-                                Developers
-                            </h4>
-                            <div className="mt-3 grid space-y-3 text-sm">
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Api
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Status
-                                    </a>
-                                </p>
 
-                            </div>
-                            <h4 className="mt-7 text-xs font-semibold text-gray-500 uppercase ">
+
+                            <h4 className=" text-xs font-semibold text-gray-500 uppercase ">
                                 Industries
                             </h4>
                             <div className="mt-3 grid space-y-3 text-sm">
@@ -210,12 +190,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                     >
                                         Privacy
                                     </a>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Status
-                                    </a>
+
                                 </div>
                             </div>
                             <div className="flex flex-wrap justify-between items-center gap-3">

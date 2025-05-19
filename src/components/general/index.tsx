@@ -5,5 +5,9 @@ import MenuItemWidget from './MenuItemWidget';
 import LocoScrollWrapperWidget from './LocoScrollWrapperWidget';
 import CursorProviderWidget from './CursorProviderWidget';
 import AnimatedTextWidget from './AnimateTextWidget';
+import ModalWidget from './ModalWidget';
 
-export { HeaderWidget, FooterWidget, PageCover, MenuItemWidget, LocoScrollWrapperWidget, CursorProviderWidget, AnimatedTextWidget };
+export {
+    HeaderWidget, FooterWidget, PageCover, MenuItemWidget, LocoScrollWrapperWidget,
+    CursorProviderWidget, AnimatedTextWidget, ModalWidget
+};

@@ -100,7 +100,7 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
 
             onContextMenu={handleContextMenu}
             onClick={handleClick}
-            className="bg-black h-auto overflow-x-hidden  font-(family-name:--Canva-Sans)">
+            className="bg-black h-auto overflow-x-hidden overflow-y-auto  font-(family-name:--Canva-Sans)">
             <div
                 style={{
                     bottom: "calc(100% - min(var(--framer-viewport-height, 100%), 100%) - .5px)",
@@ -151,7 +151,6 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
 
                     <div className="w-full mt-3">
                         {children}
-
                     </div>
 
                     <div className="

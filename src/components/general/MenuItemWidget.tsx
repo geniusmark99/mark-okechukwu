@@ -1,12 +1,13 @@
 interface MenuItemProps {
-    number: number
-    title: string
+    number: number;
+    title: string;
+    onClick: () => void;
 
 }
 
-const MenuItemWidget = ({ number, title }: MenuItemProps) => {
+const MenuItemWidget = ({ number, title, onClick }: MenuItemProps) => {
     return (
-        <div className={`flex group items-center justify-between w-full max-w-3xl mx-auto my-2`}>
+        <div className={`flex group items-center justify-between w-full max-w-3xl mx-auto my-2`} onClick={onClick}>
             <div className={`size-16 flex items-center justify-center rounded-full border-2 bg-black  border-white text-white`}>
                 {number}
             </div>
