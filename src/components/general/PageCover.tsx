@@ -1,5 +1,5 @@
 'use client'
-import React, { ReactNode, useState, MouseEvent, useContext } from 'react';
+import React, { ReactNode, useState, MouseEvent, useContext, useEffect } from 'react';
 import HeaderWidget from './HeaderWidget';
 import FooterWidget from './FooterWidget';
 import ContextMenuWidget from './ContextMenuWidget';
@@ -63,34 +63,34 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
     }
 
 
-    // useEffect(() => {
-    //     const handleKeyPress = (event: KeyboardEvent) => {
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
 
-    //         const isCtrlShiftI = event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'i';
-    //         const isF11 = event.key === 'F11';
-    //         const isF12 = event.key === 'F12';
-    //         const isCtrlS = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's';
+            const isCtrlShiftI = event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'i';
+            const isF11 = event.key === 'F11';
+            const isF12 = event.key === 'F12';
+            const isCtrlS = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's';
 
 
-    //         if (isCtrlShiftI || isF11 || isCtrlS || isF12) {
-    //             event.preventDefault();
+            if (isCtrlShiftI || isF11 || isCtrlS || isF12) {
+                event.preventDefault();
 
-    //             const syntheticEvent = {
-    //                 preventDefault: () => { },
-    //                 pageX: "40%",
-    //                 pageY: "25%"
-    //             } as unknown as MouseEvent;
+                const syntheticEvent = {
+                    preventDefault: () => { },
+                    pageX: "40%",
+                    pageY: "25%"
+                } as unknown as MouseEvent;
 
-    //             handleContextMenu(syntheticEvent);
-    //         }
-    //     };
+                handleContextMenu(syntheticEvent);
+            }
+        };
 
-    //     window.addEventListener('keydown', handleKeyPress);
+        window.addEventListener('keydown', handleKeyPress);
 
-    //     return () => {
-    //         window.removeEventListener('keydown', handleKeyPress);
-    //     };
-    // }, []);
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
 
 
 
