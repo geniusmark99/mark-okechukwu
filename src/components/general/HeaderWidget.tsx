@@ -31,6 +31,7 @@ const HeaderWidget = () => {
     const navLinks = [
         { href: '/projects', label: 'Projects' },
         { href: '/blog', label: 'Blog' },
+        { href: '/games', label: 'Games' },
         { href: '/research', label: 'Research' },
     ];
 

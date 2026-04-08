@@ -10,6 +10,7 @@ const FooterWidget = () => {
             links: [
                 { name: "Projects", href: "/projects" },
                 { name: "Blog", href: "/blog" },
+                { name: "Playground", href: "/games" },
                 { name: "Research", href: "/research" },
                 { name: "Contact", href: "/contact" },
             ]
