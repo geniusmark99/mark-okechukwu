@@ -245,8 +245,8 @@ export default function Home() {
           <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] left-[20%] w-[40vw] h-[40vw] rounded-full bg-blue-600/20 blur-[120px] pointer-events-none mix-blend-screen" />
           <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute bottom-[10%] right-[20%] w-[50vw] h-[50vw] rounded-full bg-purple-600/20 blur-[150px] pointer-events-none mix-blend-screen" />
 
-          {/* Majestic Typography Behind the 3D Image (Mobile: On Top) */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center z-[50] md:z-10 pointer-events-none pb-20">
+          {/* Majestic Typography Behind the 3D Image */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center z-10 pointer-events-none pb-20">
             <h1 className="text-[28vw] md:text-[20vw] leading-[0.8] text-center font-black text-white/90 font-(family-name:--Canva-Sans-Display) tracking-tighter drop-shadow-2xl mix-blend-plus-lighter">
               <SplitText text="MARK" delay={0.2} />
             </h1>
@@ -258,7 +258,7 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
 
           {/* Focal 3D Model */}
-          <div className="w-full h-full flex flex-col justify-center items-center relative z-10 md:z-30 pt-32">
+          <div className="w-full h-full flex flex-col justify-center items-center relative z-30 pt-32">
             <motion.div
               initial={{ y: 50, opacity: 0, scale: 0.9 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -270,7 +270,7 @@ export default function Home() {
                 priority width={1000} height={1000}
                 alt="Mark Okechukwu 3D Avatar"
                 src="/images/mark-okechukwu-3d.png"
-                className="w-[280px] min-[320px]:w-[320px] md:w-[480px] lg:w-[620px] object-contain drop-shadow-2xl z-[5] md:z-40 relative"
+                className="w-[280px] min-[320px]:w-[320px] md:w-[480px] lg:w-[620px] object-contain drop-shadow-2xl z-40 relative"
                 draggable="false"
               />
             </motion.div>
