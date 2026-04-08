@@ -18,12 +18,13 @@ const LocoSrollWrapperWidget = ({ children }: Props) => {
             const LocomotiveScroll = LocomotiveScrollModule.default;
 
             const scroll = new LocomotiveScroll({
-                el: scrollRef.current!,
-                smooth: true,
-                lerp: 0.1,
+                lenisOptions: {
+                    lerp: 0.1,
+                    smoothWheel: true,
+                },
             });
 
-            const handleResize = () => scroll.update();
+            const handleResize = () => scroll.resize();
             window.addEventListener("resize", handleResize);
 
             return () => {
