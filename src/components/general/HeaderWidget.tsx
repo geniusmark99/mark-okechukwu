@@ -42,7 +42,7 @@ const HeaderWidget = () => {
             }}
         >
             {/* ─── Desktop 3-Column Grid ─── */}
-            <div className='flex items-center justify-between px-4 md:px-8 lg:px-12'>
+            <div className='flex items-center justify-between px-3 md:px-8 lg:px-12'>
 
                 {/* LEFT: Logo */}
                 <div className='flex items-center'>
@@ -61,7 +61,7 @@ const HeaderWidget = () => {
                     </button>
 
                     <Link href='/' className="flex items-center gap-1.5 group">
-                        <svg className="fill-white w-[72px] h-8 group-hover:opacity-90 transition-opacity" width="1654" height="332" viewBox="0 0 1654 332" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="fill-white w-14 min-[320px]:w-[72px] h-auto group-hover:opacity-90 transition-opacity" width="1654" height="332" viewBox="0 0 1654 332" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1256 76.6406L1009.24 330.75H1204.54L1123 249.052L1178.58 192L1317 331H1207V331.25H1009V0H1185.12L1256 76.6406ZM539.41 329H453.072L452.939 328.75H346.277L346.41 329H279.338L279.471 328.75H193.133L193 329H0L173.205 2L269.705 184.186L193.397 328.25H279.735L312.873 265.686L346.013 328.25H452.675L366.205 165L312.873 265.686L269.705 184.186L366.205 2L539.41 329ZM947.41 329H601L774.205 2L947.41 329ZM1456 149.113L1554 2.58984H1654L1518.21 195.244L1650 327.59H1537.79L1471.64 261.309L1456 283.495V328.34H1641V328.84H1456V329H1378V2H1456V149.113ZM682.406 328.25H866.004L774.205 155L682.406 328.25ZM831.157 298.5H716.843L774 195L831.157 298.5ZM1097 160.5L1171 87L1133.5 47H1097V160.5Z" />
                         </svg>
                     </Link>
@@ -95,11 +95,11 @@ const HeaderWidget = () => {
                 <div className='flex items-center'>
                     <div className="relative group cursor-pointer" onClick={handleClick}>
                         <svg width="110" height="44" viewBox="0 0 98 42" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            className="absolute -top-[14px] -left-[18px] w-[110px] h-[44px] fill-blue-500 group-hover:fill-blue-400 transition-colors duration-300 group-hover:scale-105 origin-center"
+                            className="absolute -top-[14px] -left-[14px] min-[320px]:-left-[18px] w-[90px] min-[320px]:w-[110px] h-auto fill-blue-500 group-hover:fill-blue-400 transition-colors duration-300 group-hover:scale-105 origin-center"
                         >
                             <path d={SCRIBBLE_PATH} strokeWidth="2" strokeLinecap="round" />
                         </svg>
-                        <span className='relative z-10 text-white text-[0.95rem] font-medium tracking-wide px-3 py-1'>
+                        <span className='relative z-10 text-white text-[0.85rem] min-[320px]:text-[0.95rem] font-medium tracking-wide px-2 min-[320px]:px-3 py-1'>
                             Contact
                         </span>
                     </div>

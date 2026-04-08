@@ -2,255 +2,86 @@ import React from 'react'
 import Link from 'next/link';
 
 const FooterWidget = () => {
+    const currentYear = new Date().getFullYear();
+
+    const sections = [
+        {
+            title: "Navigation",
+            links: [
+                { name: "Projects", href: "/projects" },
+                { name: "Blog", href: "/blog" },
+                { name: "Research", href: "/research" },
+                { name: "Contact", href: "/contact" },
+            ]
+        },
+        {
+            title: "Ventures",
+            links: [
+                { name: "Akauntme", href: "https://akauntme.com" },
+                { name: "HausFinda", href: "#" },
+                { name: "VersityLearn", href: "#" },
+                { name: "LundryMan", href: "#" },
+            ]
+        },
+        {
+            title: "Social",
+            links: [
+                { name: "LinkedIn", href: "https://linkedin.com/in/markokechukwu" },
+                { name: "Twitter", href: "https://twitter.com/markthadev" },
+                { name: "GitHub", href: "https://github.com/geniusmark99" },
+                { name: "WhatsApp", href: "https://wa.me/+2348141625004" },
+            ]
+        }
+    ];
+
     return (
-        <footer className="mt-auto w-full  px-4 sm:px-6 lg:px-8 mx-auto relative bg-black">
-            <div className="p-4 sm:p-8 w-full overflow-hidden  bg-gray-950/[2.5%] after:pointer-events-none after:absolute 
-after:inset-0 after:inset-ring after:inset-ring-gray-950/5 dark:after:inset-ring-white/10 
-bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_10px] bg-fixed 
-[--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
-                <div className='max-w-[85rem]'>
+        <footer className="w-full bg-black border-t border-white/5 pt-20 pb-10 relative overflow-hidden">
+            {/* Background Light Effect */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-blue-600/5 blur-[120px] pointer-events-none" />
 
-                    <div className="py-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-10">
-                        <div className="col-span-full hidden lg:col-span-1 lg:block">
-                            <Link
-                                className="flex-none font-semibold text-xl text-black focus:outline-hidden focus:opacity-80 "
-                                href="#"
-                                aria-label="Brand"
-                            >
-                            </Link>
-                            <p className="mt-3 text-xs sm:text-sm text-gray-300 ">
-                                2025 Mark Okechukwu
-                            </p>
-                        </div>
-                        {/* End Col */}
-                        <div>
-                            <h4 className="text-xs font-semibold text-gray-500 uppercase ">
-                                Product
-                            </h4>
-                            <div className="mt-3 grid space-y-3 text-sm">
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800"
-                                        href="#"
-                                    >
-                                       Akauntme
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800"
-                                        href="#"
-                                    >
-                                        HausFinda
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        VersityLearn
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                     LundryMan
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        {/* End Col */}
-                        <div>
-                            <h4 className="text-xs font-semibold text-gray-500 uppercase ">
-                                Company
-                            </h4>
-                            <div className="mt-3 grid space-y-3 text-sm">
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        About me
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Blog
-                                    </a>
-                                </p>
-
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Customers
-                                    </a>
-                                </p>
-                           
-
-                            </div>
-                        </div>
-                        {/* End Col */}
-                        <div>
-                            <h4 className="text-xs font-semibold text-gray-500 uppercase ">
-                                Resources
-                            </h4>
-                            <div className="mt-3 grid space-y-3 text-sm">
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Community
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Help &amp; Support
-                                    </a>
-                                </p>
-
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        What&apos;s New
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Status
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        {/* End Col */}
-                        {/* <div>
-
-
-                            <h4 className=" text-xs font-semibold text-gray-500 uppercase ">
-                                Industries
-                            </h4>
-                            <div className="mt-3 grid space-y-3 text-sm">
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Financial Services
-                                    </a>
-                                </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Education
-                                    </a>
-                                </p>
-                            </div>
-                        </div> */}
-                        {/* End Col */}
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 lg:gap-8 mb-20">
+                    {/* Brand Section */}
+                    <div className="col-span-2 lg:col-span-2">
+                        <Link href="/" className="inline-block group">
+                            <svg className="fill-white w-[100px] h-auto group-hover:opacity-80 transition-opacity" width="1654" height="332" viewBox="0 0 1654 332" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1256 76.6406L1009.24 330.75H1204.54L1123 249.052L1178.58 192L1317 331H1207V331.25H1009V0H1185.12L1256 76.6406ZM539.41 329H453.072L452.939 328.75H346.277L346.41 329H279.338L279.471 328.75H193.133L193 329H0L173.205 2L269.705 184.186L193.397 328.25H279.735L312.873 265.686L346.013 328.25H452.675L366.205 165L312.873 265.686L269.705 184.186L366.205 2L539.41 329ZM947.41 329H601L774.205 2L947.41 329ZM1456 149.113L1554 2.58984H1654L1518.21 195.244L1650 327.59H1537.79L1471.64 261.309L1456 283.495V328.34H1641V328.84H1456V329H1378V2H1456V149.113ZM682.406 328.25H866.004L774.205 155L682.406 328.25ZM831.157 298.5H716.843L774 195L831.157 298.5ZM1097 160.5L1171 87L1133.5 47H1097V160.5Z" />
+                            </svg>
+                        </Link>
+                        <p className="mt-8 text-gray-400 text-sm md:text-base leading-relaxed max-w-xs font-light">
+                            Sculpting elegant software solutions with precision and soul. Driven by the philosophy of elegance in engineering.
+                        </p>
                     </div>
-                    <div className="pt-5 mt-5 border-t-[0.5px] border-gray-400/50 ">
-                        <div className="sm:flex sm:justify-between sm:items-center">
-                            <div className="flex flex-wrap items-center gap-3">
 
-                                <div className="space-x-4 text-sm">
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Terms
-                                    </a>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Privacy
-                                    </a>
-
-                                </div>
-                            </div>
-                            <div className="flex flex-wrap justify-between items-center gap-3">
-                                <div className="mt-3 sm:hidden">
-                                    <a
-                                        className="flex-none font-semibold text-xl text-black focus:outline-hidden focus:opacity-80 "
-                                        href="#"
-                                        aria-label="Brand"
-                                    >
-                                        Brand
-                                    </a>
-                                    <p className="mt-1 text-xs sm:text-sm text-gray-300 ">
-                                        © 2025 Preline Labs.
-                                    </p>
-                                </div>
-                                {/* Social Brands */}
-                                <div className="space-x-4">
-                                    <a
-                                        className="inline-block text-gray-500 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        <svg
-                                            className="shrink-0 size-4"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={16}
-                                            height={16}
-                                            fill="currentColor"
-                                            viewBox="0 0 16 16"
+                    {/* Links sections */}
+                    {sections.map((section) => (
+                        <div key={section.title}>
+                            <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-6">
+                                {section.title}
+                            </h4>
+                            <ul className="space-y-4">
+                                {section.links.map((link) => (
+                                    <li key={link.name}>
+                                        <Link
+                                            href={link.href}
+                                            className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-1 inline-block"
                                         >
-                                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-                                        </svg>
-                                    </a>
-                                    <a
-                                        className="inline-block text-gray-500 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        <svg
-                                            className="shrink-0 size-4"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={16}
-                                            height={16}
-                                            fill="currentColor"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                                        </svg>
-                                    </a>
-                                    <a
-                                        className="inline-block text-gray-500 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        <svg
-                                            className="shrink-0 size-4"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={16}
-                                            height={16}
-                                            fill="currentColor"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z" />
-                                        </svg>
-                                    </a>
-                                </div>
-                                {/* End Social Brands */}
-                            </div>
-                            {/* End Col */}
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
+                    ))}
+                </div>
+
+                <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-gray-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
+                        © {currentYear} MARK OKECHUKWU. ALL RIGHTS RESERVED.
+                    </p>
+                    <div className="flex gap-x-8">
+                        <Link href="/privacy" className="text-gray-500 hover:text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors">Privacy</Link>
+                        <Link href="/terms" className="text-gray-500 hover:text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors">Terms</Link>
                     </div>
                 </div>
             </div>
@@ -258,5 +89,5 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
     )
 }
 
-
 export default FooterWidget;
+;
