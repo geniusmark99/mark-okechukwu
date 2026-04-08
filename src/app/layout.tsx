@@ -2,7 +2,6 @@
 // import type { Metadata } from "next";
 import "./globals.css";
 import Head from 'next/head'
-import LocoSrollWrapperWidget from "@/components/general/LocoScrollWrapperWidget";
 import { GradientProvider } from "@/components/general/GradientContextWidget";
 import { CursorProviderWidget } from "@/components/general";
 
@@ -24,13 +23,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
       </Head>
       <body
-        className={` antialiased`}
+        className={` antialiased bg-black`}
       >
         <CursorProviderWidget />
         <GradientProvider>
-          <LocoSrollWrapperWidget>
             {children}
-          </LocoSrollWrapperWidget>
         </GradientProvider>
       </body>
     </html >

@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 const FooterWidget = () => {
     return (
-        <footer className="mt-auto w-full  px-4 sm:px-6 lg:px-8 mx-auto relative">
+        <footer className="mt-auto w-full  px-4 sm:px-6 lg:px-8 mx-auto relative bg-black">
             <div className="p-4 sm:p-8 w-full overflow-hidden  bg-gray-950/[2.5%] after:pointer-events-none after:absolute 
 after:inset-0 after:inset-ring after:inset-ring-gray-950/5 dark:after:inset-ring-white/10 
 bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_10px] bg-fixed 
 [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
                 <div className='max-w-[85rem]'>
 
-                    <div className="py-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-10">
+                    <div className="py-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-10">
                         <div className="col-span-full hidden lg:col-span-1 lg:block">
                             <Link
                                 className="flex-none font-semibold text-xl text-black focus:outline-hidden focus:opacity-80 "
@@ -19,7 +19,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                             >
                             </Link>
                             <p className="mt-3 text-xs sm:text-sm text-gray-300 ">
-                                2025 Smart Innovative Tech.
+                                2025 Mark Okechukwu
                             </p>
                         </div>
                         {/* End Col */}
@@ -33,7 +33,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                         className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800"
                                         href="#"
                                     >
-                                        Pricing
+                                       Akauntme
                                     </a>
                                 </p>
                                 <p>
@@ -41,7 +41,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                         className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800"
                                         href="#"
                                     >
-                                        Changelog
+                                        HausFinda
                                     </a>
                                 </p>
                                 <p>
@@ -49,7 +49,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                         className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
                                         href="#"
                                     >
-                                        Docs
+                                        VersityLearn
                                     </a>
                                 </p>
                                 <p>
@@ -57,7 +57,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                         className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
                                         href="#"
                                     >
-                                        Download
+                                     LundryMan
                                     </a>
                                 </p>
                             </div>
@@ -93,14 +93,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                         Customers
                                     </a>
                                 </p>
-                                <p>
-                                    <a
-                                        className="inline-flex gap-x-2 text-gray-300 hover:text-gray-800 focus:outline-hidden focus:text-gray-800  "
-                                        href="#"
-                                    >
-                                        Newsroom
-                                    </a>
-                                </p>
+                           
 
                             </div>
                         </div>
@@ -146,7 +139,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                             </div>
                         </div>
                         {/* End Col */}
-                        <div>
+                        {/* <div>
 
 
                             <h4 className=" text-xs font-semibold text-gray-500 uppercase ">
@@ -170,7 +163,7 @@ bg-[image:radial-gradient(var(--pattern-fg)_1px,_transparent_0)] bg-[size:10px_1
                                     </a>
                                 </p>
                             </div>
-                        </div>
+                        </div> */}
                         {/* End Col */}
                     </div>
                     <div className="pt-5 mt-5 border-t-[0.5px] border-gray-400/50 ">

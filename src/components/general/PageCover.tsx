@@ -1,5 +1,6 @@
 'use client'
-import React, { ReactNode, useState, MouseEvent, useContext, useEffect } from 'react';
+import React, { ReactNode, useState, MouseEvent, useContext, useEffect, useRef } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import HeaderWidget from './HeaderWidget';
 import FooterWidget from './FooterWidget';
 import ContextMenuWidget from './ContextMenuWidget';
@@ -19,30 +20,31 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
 
     const [contextMenuVisible, setContextMenuVisible] = useState(false);
     const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
+    const controls = useAnimation();
+    const lastScrollY = useRef(0);
+    const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
 
     const contextMenuItems = [
         {
             label: 'My Skills',
             icon: <FaApple />,
             children: [
-                { label: 'Javascript', icon: <FaBuyNLarge />, onClick: () => alert('Track your business sales') },
-                { label: 'Php', icon: <FaReceipt />, onClick: () => alert('Generate digital receipts') },
-                { label: 'Laravel', icon: <FaStore />, onClick: () => alert('Track your Inventories') },
-                { label: 'React(NextJs)', icon: <FaStore />, onClick: () => alert('Assign Staffs') },
-                { label: 'Java', icon: <FaBell />, onClick: () => alert('Smart notification Reports') },
+                { label: 'Javascript', icon: <FaBuyNLarge />, description: 'Expert-level JavaScript development — ES6+, async patterns, closures, prototypal inheritance, and building performant, scalable frontend & backend systems.' },
+                { label: 'Php', icon: <FaReceipt />, description: 'Seasoned PHP developer with deep experience in server-side rendering, RESTful APIs, and enterprise-grade web application architecture.' },
+                { label: 'Laravel', icon: <FaStore />, description: 'Full-stack Laravel craftsman — Eloquent ORM, Blade templating, Horizon queues, Sanctum auth, and building robust SaaS platforms from scratch.' },
+                { label: 'React (Next.js)', icon: <FaStore />, description: 'Advanced React & Next.js engineer — Server Components, App Router, ISR/SSR, Framer Motion animations, and pixel-perfect responsive interfaces.' },
+                { label: 'Java', icon: <FaBell />, description: 'Strong Java fundamentals — OOP design patterns, Spring Boot microservices, multithreading, and building high-throughput backend systems.' },
             ],
         },
         {
-            label: 'My Hobbits',
+            label: 'My Hobbies',
             icon: <FaBeer />,
             children: [
-                { label: 'Reading and Studying', icon: <FaReceipt />, onClick: () => alert('For Personal usage') },
-                { label: 'Thinking and Creating', icon: <FaReceipt />, onClick: () => alert('For Personal usage') },
-                { label: 'Coding and Building', icon: <FaReceipt />, onClick: () => alert('For Personal usage') },
-
+                { label: 'Reading & Studying', icon: <FaReceipt />, description: 'Constantly learning through books, research papers, and online courses — staying at the bleeding edge of technology and design thinking.' },
+                { label: 'Thinking & Creating', icon: <FaReceipt />, description: 'Deep-thinking creative — ideating product concepts, sketching system architectures, and turning abstract ideas into tangible digital experiences.' },
+                { label: 'Coding & Building', icon: <FaReceipt />, description: 'Passionate builder — shipping production apps, open-source contributions, and turning complex problems into elegant, maintainable solutions.' },
             ],
         }
-
     ];
 
 
@@ -63,26 +65,63 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
     }
 
 
+    // 🧭 Scroll direction detection
     useEffect(() => {
-        const handleKeyPress = (event: KeyboardEvent) => {
+        const handleScroll = () => {
+            const currentY = window.scrollY;
 
-            const isCtrlShiftI = event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'i';
-            const isF11 = event.key === 'F11';
-            const isF12 = event.key === 'F12';
-            const isCtrlS = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's';
-
-
-            if (isCtrlShiftI || isF11 || isCtrlS || isF12) {
-                event.preventDefault();
-
-                const syntheticEvent = {
-                    preventDefault: () => { },
-                    pageX: "40%",
-                    pageY: "25%"
-                } as unknown as MouseEvent;
-
-                handleContextMenu(syntheticEvent);
+            if (currentY > lastScrollY.current && currentY > 80) {
+                setScrollDirection('down');
+            } else if (currentY < lastScrollY.current) {
+                setScrollDirection('up');
             }
+
+            lastScrollY.current = currentY;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+
+    // 🎬 Animate Header based on scroll
+    useEffect(() => {
+        if (scrollDirection === 'down') {
+            controls.start({
+                y: -100,
+                opacity: 0,
+                transition: { duration: 0.4, ease: 'easeInOut' },
+            });
+        } else if (scrollDirection === 'up') {
+            controls.start({
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.4, ease: 'easeInOut' },
+            });
+        }
+    }, [scrollDirection, controls]);
+
+
+    useEffect(() => {
+        const handleKeyPress = () => {
+
+            // const isCtrlShiftI = event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'i';
+            // const isF11 = event.key === 'F11';
+            // const isF12 = event.key === 'F12';
+            // const isCtrlS = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's';
+
+
+            // if (isCtrlShiftI || isF11 || isCtrlS || isF12) {
+            //     event.preventDefault();
+
+            //     const syntheticEvent = {
+            //         preventDefault: () => { },
+            //         pageX: "40%",
+            //         pageY: "25%"
+            //     } as unknown as MouseEvent;
+
+            //     handleContextMenu(syntheticEvent);
+            // }
         };
 
         window.addEventListener('keydown', handleKeyPress);
@@ -128,17 +167,27 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
                 ></div>
             </div>
 
-            {
+            {/* {
                 showHeader ? <HeaderWidget /> : ''
-            }
-            <section className="h-auto text-white   bg-black bg-cover bg-no-repeat relative" >
+            } */}
+
+            {showHeader && (
+                <motion.div
+                    animate={controls}
+                    initial={{ y: 0, opacity: 1 }}
+                    className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md"
+                >
+                    <HeaderWidget />
+                </motion.div>
+            )}
+            <section className="h-auto text-white bg-black bg-cover bg-no-repeat relative z-10" >
                 <div className="hidden lg:flex absolute top-4 left-30 overflow-hidden pointer-events-none">
-                    <svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 0V696" stroke="#4A5565" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
-                        <path d="M601 0V696" stroke="#4A5565" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
-                        <path d="M301 0V696" stroke="#4A5565" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
-                        <path d="M901 0V696" stroke="#4A5565" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
-                        <path d="M1201 0V696" stroke="#4A5565" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
+                    <svg width="1400" className='stroke-gray-100' height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
+                        <path d="M601 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
+                        <path d="M301 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
+                        <path d="M901 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
+                        <path d="M1201 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
                     </svg>
                 </div>
 
@@ -149,7 +198,7 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
          dark:[--pattern-fg:var(--color-white)]/10 w-[30px] left-0 h-auto">
                     </div>
 
-                    <div className="w-full mt-3">
+                    <div className="w-full mt-3 h-auto pt-[50px]">
                         {children}
                     </div>
 
