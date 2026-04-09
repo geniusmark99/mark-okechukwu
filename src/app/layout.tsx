@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { GradientProvider } from "@/components/general/GradientContextWidget";
-import { CursorProviderWidget, PWAManager, SplashScreenWidget, CommandPaletteWidget, SoundProvider, FocusPlayerWidget } from "@/components/general";
+import { CursorProviderWidget, PWAManager, SplashScreenWidget, CommandPaletteWidget, SoundProvider } from "@/components/general";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://markokechukwu.com'),
@@ -117,7 +117,6 @@ export default function RootLayout({
         <SoundProvider>
           <SplashScreenWidget />
           <CommandPaletteWidget />
-          <FocusPlayerWidget />
           <PWAManager />
           <CursorProviderWidget />
           <GradientProvider>

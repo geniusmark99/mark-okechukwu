@@ -337,9 +337,16 @@ export default function CyberDashPage() {
     const jump = useCallback(() => {
         const state = posRef.current;
         if (state.jumpCount >= 2 || gameState !== 'playing') return;
-        state.isJumping = true; state.jumpCount++; state.playerVY = JUMP_FORCE; playSFX('jump');
-        for (let i = 0; i < 10; i++) {
-            state.particles.push({ x: PLAYER_X + PLAYER_SIZE / 2, y: GROUND_Y, vx: (Math.random() - 0.5) * 5, vy: (Math.random() - 0.5) * 5, life: 30 });
+        state.isJumping = true;
+
+        // Give 2nd jump a massive atmospheric boost for better mobile feel
+        const currentJumpForce = state.jumpCount > 0 ? JUMP_FORCE * 1.25 : JUMP_FORCE;
+
+        state.playerVY = currentJumpForce;
+        state.jumpCount++;
+        playSFX('jump');
+        for (let i = 0; i < 15; i++) {
+            state.particles.push({ x: PLAYER_X + PLAYER_SIZE / 2, y: state.playerY + PLAYER_SIZE, vx: (Math.random() - 0.5) * 8, vy: (Math.random() - 0.5) * 8, life: 30 });
         }
     }, [gameState, playSFX]);
 
@@ -384,7 +391,7 @@ export default function CyberDashPage() {
 
     return (
         <PageCover showHeader={false} showFooter={false}>
-            <div className={`min-h-screen bg-black overflow-hidden transition-all duration-700 ${(gameState === 'playing' || gameState === 'paused') ? 'pt-0' : 'pt-16 md:pt-28 pb-10 md:pb-20 px-4 md:px-6'}`}>
+            <div className={`min-h-screen bg-black overflow-hidden transition-all duration-700 ${(gameState === 'playing' || gameState === 'paused') ? 'pt-0' : ' pb-10 md:pb-20 px-4 md:px-6'}`}>
                 <div className={`transition-all duration-700 ${(gameState === 'playing' || gameState === 'paused') ? 'fixed inset-0 z-[100] bg-black overflow-hidden' : 'max-w-4xl mx-auto'}`}>
 
                     <AnimatePresence>
@@ -439,11 +446,17 @@ export default function CyberDashPage() {
                     <div
                         className={`relative w-full overflow-hidden cursor-crosshair group transition-all duration-700 touch-none flex items-center justify-center bg-black
                             ${(gameState === 'playing' || gameState === 'paused') ? 'fixed inset-0 z-[100] h-screen w-screen rounded-none' : 'aspect-[16/9] rounded-[40px] border-2 border-white/10'}`}
-                        onClick={gameState === 'playing' ? jump : undefined}
+                        onClick={() => {
+                            if (gameState === 'playing') jump();
+                            else if (gameState === 'idle' || gameState === 'gameOver') startGame();
+                        }}
                         onTouchStart={(e) => {
                             if (gameState === 'playing') {
-                                e.preventDefault();
-                                jump();
+                                // Allow touch for game but don't block start/paused buttons if they were somehow reachable
+                                if ((e.target as HTMLElement).tagName !== 'BUTTON') {
+                                    e.preventDefault();
+                                    jump();
+                                }
                             }
                         }}
                     >
@@ -476,6 +489,54 @@ export default function CyberDashPage() {
                                     <p className="text-red-400 font-bold mb-8 uppercase tracking-widest">Data Recovered: {score}</p>
                                     <button onClick={(e) => { e.stopPropagation(); if (lives > 0) startGame(); }} disabled={lives <= 0} className={`px-10 py-4 rounded-full font-black uppercase tracking-widest transition-transform ${lives > 0 ? 'bg-white text-black hover:scale-110' : 'bg-gray-800 text-gray-500'}`}>{lives > 0 ? 'Retry Sync' : 'Recharging'}</button>
                                     {lives <= 0 && timeLeft && <div className="mt-8"><p className="text-3xl font-mono text-white">{formatTime(timeLeft)}</p><p className="text-[10px] text-gray-500 uppercase font-black uppercase">Neural Repair in Progress</p></div>}
+                                </motion.div>
+                            )}
+                            {gameState === 'paused' && (
+                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur-md z-30 px-6">
+                                    <div className="bg-slate-900/80 border border-white/10 rounded-[32px] p-6 md:p-8 max-w-sm w-full shadow-2xl">
+                                        <h3 className="text-3xl font-black text-white italic uppercase mb-8 text-center italic tracking-tighter">Link <span className="text-blue-500">Paused</span></h3>
+
+                                        <div className="space-y-4 mb-8">
+                                            <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
+                                                <div className="flex items-center gap-3">
+                                                    <Volume2 className="w-5 h-5 text-blue-400" />
+                                                    <span className="text-[10px] font-black text-white uppercase tracking-widest">SFX</span>
+                                                </div>
+                                                <button
+                                                    onClick={() => setSoundEnabled(!soundEnabled)}
+                                                    className={`w-12 h-6 rounded-full transition-all relative ${soundEnabled ? 'bg-blue-600' : 'bg-gray-700'}`}
+                                                >
+                                                    <motion.div
+                                                        animate={{ x: soundEnabled ? 24 : 4 }}
+                                                        className="absolute top-1 left-0 w-4 h-4 bg-white rounded-full"
+                                                    />
+                                                </button>
+                                            </div>
+
+                                            <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
+                                                <div className="flex items-center gap-3">
+                                                    <Music className="w-5 h-5 text-cyan-400" />
+                                                    <span className="text-[10px] font-black text-white uppercase tracking-widest">Music</span>
+                                                </div>
+                                                <button
+                                                    onClick={() => setBgmEnabled(!bgmEnabled)}
+                                                    className={`w-12 h-6 rounded-full transition-all relative ${bgmEnabled ? 'bg-cyan-600' : 'bg-gray-700'}`}
+                                                >
+                                                    <motion.div
+                                                        animate={{ x: bgmEnabled ? 24 : 4 }}
+                                                        className="absolute top-1 left-0 w-4 h-4 bg-white rounded-full"
+                                                    />
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => setGameState('playing')}
+                                            className="w-full py-4 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+                                        >
+                                            Resume Sync
+                                        </button>
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>

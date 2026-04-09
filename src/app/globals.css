@@ -55,7 +55,6 @@
     html {
         -webkit-tap-highlight-color: transparent;
         scroll-behavior: smooth;
-        overscroll-behavior-y: none;
     }
 
     body {
@@ -106,8 +105,10 @@ img {
     * {
         -webkit-overflow-scrolling: touch;
     }
+
     .backdrop-blur-3xl {
-        backdrop-filter: blur(20px); /* Lighter on mobile GPUs */
+        backdrop-filter: blur(20px);
+        /* Lighter on mobile GPUs */
     }
 }
 

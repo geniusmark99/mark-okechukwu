@@ -10,6 +10,11 @@ MouseFollower.registerGSAP(gsap);
 const CursorProviderWidget = () => {
     useEffect(() => {
         if (typeof window === "undefined") return;
+
+        // Don't initialize on mobile/touch devices
+        const isMobile = window.matchMedia('(pointer: coarse)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (isMobile) return;
+
         const timeout = setTimeout(() => {
             const cursor = new MouseFollower({
                 el: null,
@@ -32,7 +37,7 @@ const CursorProviderWidget = () => {
             return () => {
                 cursor.destroy();
             };
-        }, 300);
+        }, 100); // Reduced delay for faster initialization on desktop
 
         return () => {
             clearTimeout(timeout);
