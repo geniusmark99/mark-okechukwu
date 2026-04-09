@@ -17,11 +17,12 @@ const LocoSrollWrapperWidget = ({ children }: Props) => {
             const LocomotiveScroll = (await import("locomotive-scroll")).default;
             scrollInstance = new LocomotiveScroll({
                 lenisOptions: {
-                    lerp: 0.1,
-                    duration: 1.2,
+                    lerp: 0.15,
+                    duration: 0.8,
                     smoothWheel: true,
-                    wheelMultiplier: 1,
-                    touchMultiplier: 2,
+                    wheelMultiplier: 1.1,
+                    touchMultiplier: 1.5,
+                    syncTouch: true,
                     infinite: false,
                 },
             });

@@ -239,7 +239,7 @@ export default function LogicFlowPage() {
 
                         <AnimatePresence>
                             {(gameState === 'idle' || gameState === 'gameOver') && (
-                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8 px-4">
+                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-4 md:mb-8 px-4">
                                     <h1 className="text-4xl md:text-8xl font-black text-white uppercase italic leading-none">Logic <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-400">Flow</span></h1>
                                     <div className="flex items-center justify-between mt-2">
                                         <p className="text-purple-500/60 text-[8px] md:text-[10px] font-black uppercase tracking-widest italic">Neural Synchronization Suite</p>

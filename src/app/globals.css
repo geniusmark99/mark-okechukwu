@@ -85,3 +85,35 @@
 .char {
     will-change: transform, opacity;
 }
+
+/* --- High-Performance Architectural Optimizations --- */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+/* Ensure images don't cause layout shifts or blurry scaling */
+img {
+    content-visibility: auto;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Reduction of expensive paint operations on mobile */
+@media (max-width: 768px) {
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    .backdrop-blur-3xl {
+        backdrop-filter: blur(20px); /* Lighter on mobile GPUs */
+    }
+}
+
+/* Hardware accelerate all motion components */
+.motion-gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+}

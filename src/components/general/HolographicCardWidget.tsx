@@ -55,7 +55,7 @@ const HolographicCardWidget = ({ children, className = "" }: Props) => {
                     rotateY,
                     transformStyle: "preserve-3d",
                 }}
-                className="w-full h-full relative"
+                className="w-full h-full relative will-change-transform"
             >
                 {/* Glare Effect */}
                 <motion.div

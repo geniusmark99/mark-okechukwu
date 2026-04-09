@@ -24,6 +24,7 @@ const FocusPlayerWidget = () => {
     const [volume, setVolume] = useState(0.2); // Low default for ambient
     const [isMuted, setIsMuted] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isDismissed, setIsDismissed] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
     const currentTrack = tracks[currentTrackIndex];
@@ -58,6 +59,8 @@ const FocusPlayerWidget = () => {
         setIsMuted(false);
     };
 
+    if (isDismissed) return null;
+
     return (
         <div className="fixed bottom-24 md:bottom-6 left-4 md:left-6 z-[100]">
             <AnimatePresence>
@@ -66,8 +69,17 @@ const FocusPlayerWidget = () => {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="bg-zinc-900/90 border border-white/10 backdrop-blur-2xl rounded-2xl p-4 w-64 shadow-2xl"
+                        className="bg-zinc-900/90 border border-white/10 backdrop-blur-2xl rounded-2xl p-4 w-64 shadow-2xl relative"
                     >
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsDismissed(true);
+                            }}
+                            className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-90 transition-all z-[110]"
+                        >
+                            <X size={12} />
+                        </button>
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2">
                                 <div className="p-2 bg-blue-500/10 rounded-lg">

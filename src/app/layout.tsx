@@ -106,7 +106,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="!overflow-x-hidden">
+    <html lang="en" className="!overflow-x-hidden" data-scroll-behavior="smooth">
       <head>
         <script
           type="application/ld+json"

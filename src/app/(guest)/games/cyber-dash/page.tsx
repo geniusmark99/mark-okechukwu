@@ -413,7 +413,7 @@ export default function CyberDashPage() {
 
                     <AnimatePresence>
                         {(gameState !== 'playing' && gameState !== 'paused') && (
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mb-8 px-4">
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mb-4 md:mb-8 px-4">
                                 <h1 className="text-4xl md:text-8xl font-black text-white uppercase italic leading-none">Cyber <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Dash</span></h1>
                                 <div className="flex items-center justify-between mt-2">
                                     <p className="text-blue-500/60 text-[8px] md:text-[10px] font-black uppercase tracking-widest">Neural Link Established</p>
