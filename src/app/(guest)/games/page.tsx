@@ -34,7 +34,7 @@ const games = [
 export default function GamesHub() {
     return (
         <PageCover showHeader={true}>
-            <div className="min-h-screen bg-black pt-32 pb-20 px-6">
+            <div className="min-h-screen bg-black pt-28 min-[320px]:pt-32 pb-10 min-[320px]:pb-20 px-4 min-[320px]:px-6">
                 <div className="max-w-6xl mx-auto">
                     {/* Back Navigation */}
                     <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-10 group">
@@ -55,7 +55,7 @@ export default function GamesHub() {
                                 </div>
                                 <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500">Interactive Experiences</span>
                             </div>
-                            <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter uppercase leading-[0.85]">
+                            <h1 className="text-[2.5rem] min-[320px]:text-4xl md:text-9xl font-black text-white tracking-tighter uppercase leading-[1.1] min-[320px]:leading-[1]">
                                 System<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">Playground</span>
                             </h1>
@@ -78,7 +78,7 @@ export default function GamesHub() {
                                 transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                             >
                                 <Link href={`/games/${game.slug}`} className="group block">
-                                    <div className="relative overflow-hidden rounded-[32px] bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-500 h-[420px] flex flex-col justify-end p-10">
+                                    <div className="relative overflow-hidden rounded-[32px] bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-500 h-[380px] min-[320px]:h-[420px] flex flex-col justify-end p-6 min-[320px]:p-10">
                                         {/* Animated Background Glow */}
                                         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] ${game.bgGlow} blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
@@ -97,11 +97,11 @@ export default function GamesHub() {
                                                     {game.difficulty}
                                                 </span>
                                             </div>
-                                            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-3 group-hover:translate-x-2 transition-transform duration-500">
+                                            <h2 className="text-3xl min-[320px]:text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-2 min-[320px]:mb-3 group-hover:translate-x-2 transition-transform duration-500">
                                                 {game.title}
                                             </h2>
-                                            <p className="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">{game.subtitle}</p>
-                                            <p className="text-gray-400 font-light leading-relaxed max-w-sm">{game.description}</p>
+                                            <p className="text-[10px] min-[320px]:text-sm text-gray-500 uppercase tracking-widest font-bold mb-3 min-[320px]:mb-4">{game.subtitle}</p>
+                                            <p className="text-sm text-gray-400 font-light leading-relaxed max-w-sm">{game.description}</p>
 
                                             <div className="flex items-center gap-2 mt-8 text-white/50 group-hover:text-white transition-colors duration-300">
                                                 <span className="text-xs font-bold uppercase tracking-widest">Launch Game</span>
@@ -119,7 +119,7 @@ export default function GamesHub() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="mt-20 p-10 md:p-14 bg-white/[0.02] border border-white/5 rounded-[40px] text-center relative overflow-hidden"
+                        className="mt-14 min-[320px]:mt-20 p-8 min-[320px]:p-10 md:p-14 bg-white/[0.02] border border-white/5 rounded-[40px] text-center relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 blur-[100px] pointer-events-none" />
                         <h2 className="text-3xl md:text-4xl font-black text-white mb-4 italic uppercase">Built with React</h2>

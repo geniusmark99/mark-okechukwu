@@ -5,17 +5,19 @@ import HeaderWidget from './HeaderWidget';
 import FooterWidget from './FooterWidget';
 import ContextMenuWidget from './ContextMenuWidget';
 import { GradientContext } from './GradientContextWidget';
-import { FaBeer, FaApple, FaReceipt, FaBell, FaBuyNLarge, FaStore } from 'react-icons/fa';
+import { FaJava, FaBookOpen, FaBrain, FaCode, FaTerminal, FaLaptopCode, FaHeart } from 'react-icons/fa';
+import { SiJavascript, SiPhp, SiLaravel, SiReact, SiNextdotjs } from 'react-icons/si';
 
 
 interface PageCoverProps {
     children: ReactNode;
     showHeader: boolean;
+    showFooter?: boolean;
 }
 
 
 
-const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) => {
+const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true, showFooter = true }) => {
 
 
     const [contextMenuVisible, setContextMenuVisible] = useState(false);
@@ -27,22 +29,22 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
     const contextMenuItems = [
         {
             label: 'My Skills',
-            icon: <FaApple />,
+            icon: <FaLaptopCode />,
             children: [
-                { label: 'Javascript', icon: <FaBuyNLarge />, description: 'Expert-level JavaScript development — ES6+, async patterns, closures, prototypal inheritance, and building performant, scalable frontend & backend systems.' },
-                { label: 'Php', icon: <FaReceipt />, description: 'Seasoned PHP developer with deep experience in server-side rendering, RESTful APIs, and enterprise-grade web application architecture.' },
-                { label: 'Laravel', icon: <FaStore />, description: 'Full-stack Laravel craftsman — Eloquent ORM, Blade templating, Horizon queues, Sanctum auth, and building robust SaaS platforms from scratch.' },
-                { label: 'React (Next.js)', icon: <FaStore />, description: 'Advanced React & Next.js engineer — Server Components, App Router, ISR/SSR, Framer Motion animations, and pixel-perfect responsive interfaces.' },
-                { label: 'Java', icon: <FaBell />, description: 'Strong Java fundamentals — OOP design patterns, Spring Boot microservices, multithreading, and building high-throughput backend systems.' },
+                { label: 'Javascript', icon: <SiJavascript className="text-yellow-400" />, description: 'Expert-level JavaScript development — ES6+, async patterns, closures, prototypal inheritance, and building performant, scalable frontend & backend systems.' },
+                { label: 'Php', icon: <SiPhp className="text-indigo-400" />, description: 'Seasoned PHP developer with deep experience in server-side rendering, RESTful APIs, and enterprise-grade web application architecture.' },
+                { label: 'Laravel', icon: <SiLaravel className="text-red-500" />, description: 'Full-stack Laravel craftsman — Eloquent ORM, Blade templating, Horizon queues, Sanctum auth, and building robust SaaS platforms from scratch.' },
+                { label: 'React (Next.js)', icon: <SiNextdotjs className="text-white" />, description: 'Advanced React & Next.js engineer — Server Components, App Router, ISR/SSR, Framer Motion animations, and pixel-perfect responsive interfaces.' },
+                { label: 'Java', icon: <FaJava className="text-orange-500" />, description: 'Strong Java fundamentals — OOP design patterns, Spring Boot microservices, multithreading, and building high-throughput backend systems.' },
             ],
         },
         {
             label: 'My Hobbies',
-            icon: <FaBeer />,
+            icon: <FaHeart />,
             children: [
-                { label: 'Reading & Studying', icon: <FaReceipt />, description: 'Constantly learning through books, research papers, and online courses — staying at the bleeding edge of technology and design thinking.' },
-                { label: 'Thinking & Creating', icon: <FaReceipt />, description: 'Deep-thinking creative — ideating product concepts, sketching system architectures, and turning abstract ideas into tangible digital experiences.' },
-                { label: 'Coding & Building', icon: <FaReceipt />, description: 'Passionate builder — shipping production apps, open-source contributions, and turning complex problems into elegant, maintainable solutions.' },
+                { label: 'Reading & Studying', icon: <FaBookOpen className="text-green-400" />, description: 'Constantly learning through books, research papers, and online courses — staying at the bleeding edge of technology and design thinking.' },
+                { label: 'Thinking & Creating', icon: <FaBrain className="text-pink-400" />, description: 'Deep-thinking creative — ideating product concepts, sketching system architectures, and turning abstract ideas into tangible digital experiences.' },
+                { label: 'Coding & Building', icon: <FaCode className="text-blue-400" />, description: 'Passionate builder — shipping production apps, open-source contributions, and turning complex problems into elegant, maintainable solutions.' },
             ],
         }
     ];
@@ -181,7 +183,7 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
                 </motion.div>
             )}
             <section className="h-auto text-white bg-black bg-cover bg-no-repeat relative z-10" >
-                <div className="hidden lg:flex absolute top-4 left-30 overflow-hidden pointer-events-none">
+                {/* <div className="hidden lg:flex absolute top-4 left-30 overflow-hidden pointer-events-none">
                     <svg width="1400" className='stroke-gray-100' height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
                         <path d="M601 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
@@ -189,7 +191,7 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
                         <path d="M901 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
                         <path d="M1201 0V696" strokeOpacity="0.5" strokeWidth="0.5" strokeDasharray="6 6" />
                     </svg>
-                </div>
+                </div> */}
 
                 <div className="flex justify-center ">
                     <div className="
@@ -209,7 +211,7 @@ const PageCover: React.FC<PageCoverProps> = ({ children, showHeader = true }) =>
                     </div>
                 </div>
 
-                <FooterWidget />
+                {showFooter && <FooterWidget />}
 
             </section>
         </main>

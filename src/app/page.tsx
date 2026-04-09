@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { PageCover } from "@/components/general";
+import { PageCover, HolographicCardWidget, useSound } from "@/components/general";
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
@@ -14,24 +14,32 @@ import {
   Code2,
   Database,
   Network,
-  X,
   Briefcase,
   BarChart3,
+  X
 } from "lucide-react";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 
 
 const SplitText = ({ text, className = "", delay = 0 }: { text: string; className?: string, delay?: number }) => {
   return (
-    <span className={`inline-block whitespace-nowrap ${className}`} style={{ perspective: "1000px" }}>
+    <span className={`inline-block whitespace-nowrap ${className}`} style={{ perspective: "1200px" }}>
       {text.split("").map((char, index) => (
         <motion.span
           key={index}
           className="char inline-block origin-bottom"
-          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-          initial={{ opacity: 0, y: 100, rotateX: -90 }}
+          style={{
+            whiteSpace: char === ' ' ? 'pre' : 'normal',
+            willChange: "transform, opacity"
+          }}
+          initial={{ opacity: 0, y: 40, rotateX: -45 }}
           whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: delay + index * 0.05 }}
+          viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+            delay: delay + index * 0.03 // Slightly faster stagger
+          }}
         >
           {char}
         </motion.span>
@@ -169,60 +177,69 @@ export default function Home() {
     skill: SkillItem;
     isOpen: boolean;
     onToggle: () => void;
-  }) => (
-    <div className="group rounded-[24px] h-full overflow-hidden relative flex flex-col gap-y-5 justify-center items-center p-8 bg-white/[0.03] border border-white/10 backdrop-blur-3xl text-white shadow-2xl transition-all duration-700 w-full hover:bg-white/[0.05]">
-      {/* Floating Orb */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-white/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+  }) => {
+    const { play } = useSound();
+    
+    return (
+      <HolographicCardWidget className="h-full">
+        <div 
+          onMouseEnter={() => play('hover')}
+          className="group rounded-[24px] h-full overflow-hidden relative flex flex-col gap-y-5 justify-center items-center p-8 bg-white/[0.03] border border-white/10 backdrop-blur-3xl text-white shadow-2xl transition-all duration-700 w-full hover:bg-white/[0.05]"
+        >
+          {/* Floating Orb */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-white/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-      <div className="absolute bottom-[-20px] text-[15rem] font-bold rotate-12 right-[-10px] bg-clip-text text-transparent bg-linear-90 from-white/10 via-white/10 to-white/10 opacity-10 pointer-events-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-        {skill.bgText}
-      </div>
+          <div className="absolute bottom-[-20px] text-[15rem] font-bold rotate-12 right-[-10px] bg-clip-text text-transparent bg-linear-90 from-white/10 via-white/10 to-white/10 opacity-10 pointer-events-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+            {skill.bgText}
+          </div>
 
-      <div className="z-10 flex flex-col items-center">
-        <div className="group-hover:scale-110 transition-transform duration-500">
-          {skill.icon}
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold text-center mt-6 tracking-wide">
-          {skill.title}
-        </h1>
-        <p className="text-center text-sm italic text-gray-400 mt-2 font-light">{skill.subtitle}</p>
-      </div>
-
-      <p className="p-2 leading-relaxed z-10 text-gray-300 text-center font-light">
-        {skill.description}
-      </p>
-
-      <button
-        onClick={onToggle}
-        className="mt-auto bg-white/10 hover:bg-white border border-white/20 hover:border-white text-white hover:text-black px-6 py-2.5 rounded-full z-10 hover:cursor-pointer cursor-pointer transition-all duration-300 backdrop-blur-md uppercase tracking-widest text-xs font-bold"
-      >
-        {isOpen ? "Hide tools" : "View tools"}
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute inset-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-[24px] p-8 text-center text-gray-200 z-20 flex flex-col justify-center items-center"
-          >
-            <button
-              className="absolute right-6 top-6 p-2 rounded-full bg-white/10 hover:bg-white hover:text-black transition-colors"
-              onClick={onToggle}
-            >
-              <X size={20} className="stroke-[3]" />
-            </button>
-            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 shadow-inner w-full max-w-sm">
-              <h3 className="text-white font-bold text-lg mb-3 uppercase tracking-widest">Tech Stack</h3>
-              <p className="text-sm md:text-base leading-loose text-gray-300">{skill.focus}</p>
+          <div className="z-10 flex flex-col items-center">
+            <div className="group-hover:scale-110 transition-transform duration-500">
+              {skill.icon}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+            <h1 className="text-2xl md:text-3xl font-semibold text-center mt-6 tracking-wide">
+              {skill.title}
+            </h1>
+            <p className="text-center text-sm italic text-gray-400 mt-2 font-light">{skill.subtitle}</p>
+          </div>
+
+          <p className="p-2 leading-relaxed z-10 text-gray-300 text-center font-light">
+            {skill.description}
+          </p>
+
+          <button
+            onClick={() => { play('click'); onToggle(); }}
+            className="mt-auto bg-white/10 hover:bg-white border border-white/20 hover:border-white text-white hover:text-black px-6 py-2.5 rounded-full z-10 hover:cursor-pointer cursor-pointer transition-all duration-300 backdrop-blur-md uppercase tracking-widest text-xs font-bold"
+          >
+            {isOpen ? "Hide tools" : "View tools"}
+          </button>
+
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                className="absolute inset-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-[24px] p-8 text-center text-gray-200 z-50 flex flex-col justify-center items-center"
+              >
+                <button
+                  className="absolute right-6 top-6 p-2 rounded-full bg-white/10 hover:bg-white hover:text-black transition-colors"
+                  onClick={() => { play('click'); onToggle(); }}
+                >
+                  <X size={20} className="stroke-[3]" />
+                </button>
+                <div className="p-6 bg-white/5 rounded-2xl border border-white/10 shadow-inner w-full max-w-sm">
+                  <h3 className="text-white font-bold text-lg mb-3 uppercase tracking-widest">Tech Stack</h3>
+                  <p className="text-sm md:text-base leading-loose text-gray-300">{skill.focus}</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </HolographicCardWidget>
+    );
+  };
 
 
 
@@ -352,7 +369,7 @@ export default function Home() {
 
           <div className="z-10 text-center mb-20 relative">
             <span className="text-blue-500 tracking-[0.3em] text-sm font-bold uppercase mb-4 block">02 // Services</span>
-            <h1 className="text-4xl min-[320px]:text-5xl md:text-7xl font-black text-white uppercase drop-shadow-lg font-(family-name:--Canva-Sans-Display)">
+            <h1 className="text-2xl min-[320px]:text-3xl md:text-5xl font-black text-white uppercase drop-shadow-lg font-(family-name:--Canva-Sans-Display)">
               <SplitText text="Core Mastery" delay={0.1} />
             </h1>
           </div>
@@ -411,12 +428,47 @@ export default function Home() {
               <span className="italic font-light opacity-80"><SplitText text="BUILD?" delay={0.4} /></span>
             </h2>
 
-            <Link href="/contact" className="group magnetic-btn relative overflow-hidden rounded-full mt-12 md:mt-16 px-10 md:px-12 py-4 md:py-5 bg-white/5 border border-white/20 backdrop-blur-lg hover:border-transparent transition-all duration-500">
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <span className="relative z-10 text-lg md:text-xl font-bold tracking-widest text-white uppercase flex items-center gap-4">
-                Initiate Link <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </span>
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-12 md:mt-16 relative group"
+            >
+              {/* Cinematic Outer Glow */}
+              <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+              <Link href="/contact" className="relative block overflow-hidden rounded-full px-10 md:px-14 py-5 md:py-6 bg-white/[0.03] border border-white/10 backdrop-blur-2xl transition-all duration-500 hover:border-white/30 hover:bg-white/[0.07] shadow-2xl">
+                {/* Moving Cinematic Glare */}
+                <motion.div
+                  initial={{ x: '-150%', skewX: -25 }}
+                  whileHover={{ x: '150%', skewX: -25 }}
+                  transition={{ repeat: Infinity, duration: 1.8, repeatDelay: 0.2, ease: "easeInOut" }}
+                  className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"
+                />
+
+                <div className="relative z-10 flex items-center gap-6">
+                  <span className="text-lg md:text-2xl font-black tracking-[0.4em] text-white uppercase mix-blend-plus-lighter">
+                    Initiate Link
+                  </span>
+
+                  <motion.div
+                    animate={{ x: [0, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20"
+                  >
+                    <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </motion.div>
+                </div>
+
+                {/* Particle Spark Track (Bottom Border Flow) */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/60 to-transparent origin-center"
+                />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -433,13 +485,33 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 w-full max-w-6xl gap-4 md:gap-6 mt-16 md:mt-24 px-6 z-20">
-          {['Instagram', 'LinkedIn', 'WhatsApp', 'Contact Me'].map((label) => (
-            <Link key={label} href={label === 'Contact Me' ? '/contact' : '/app'} className="group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] transition-all duration-500 p-6 md:p-8 flex items-end h-[120px] md:h-[160px] shadow-2xl backdrop-blur-xl">
-              <div className="absolute top-4 right-4 text-white/20 group-hover:text-white transition-colors duration-500">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          {[
+            { label: 'Instagram', icon: <FaInstagram className="w-8 h-8 md:w-10 md:h-10 opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />, href: 'https://instagram.com/markthavalor' },
+            { label: 'LinkedIn', icon: <FaLinkedinIn className="w-8 h-8 md:w-10 md:h-10 opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />, href: 'https://linkedin.com/in/mark-okechukwu' },
+            { label: 'WhatsApp', icon: <FaWhatsapp className="w-8 h-8 md:w-10 md:h-10 opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />, href: 'https://wa.me/+2348141625004' },
+            { label: 'Contact Me', icon: <FaEnvelope className="w-8 h-8 md:w-10 md:h-10 opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />, href: '/contact' }
+          ].map((social) => (
+            <Link
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith('http') ? "_blank" : "_self"}
+              rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
+              className="group relative overflow-hidden rounded-[40px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-700 p-8 md:p-12 flex flex-col justify-between items-start h-[180px] md:h-[240px] shadow-2xl backdrop-blur-2xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative z-10 w-full flex justify-between items-start">
+                <div className="text-white">
+                  {social.icon}
+                </div>
+                <div className="text-white/20 group-hover:text-white transition-colors duration-500">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
-              <span className="relative z-10 text-white/80 group-hover:text-white font-semibold uppercase tracking-widest text-xs md:text-sm">{label}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div className="relative z-10 text-left">
+                <span className="block text-[10px] text-blue-400 font-black uppercase tracking-[0.3em] mb-1 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">Let&apos;s Connect</span>
+                <div className="text-white font-black uppercase tracking-[0.2em] text-xs md:text-sm">{social.label}</div>
+              </div>
             </Link>
           ))}
         </div>

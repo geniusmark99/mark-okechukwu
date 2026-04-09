@@ -16,12 +16,12 @@ const FooterWidget = () => {
             ]
         },
         {
-            title: "Ventures",
+            title: "Projects",
             links: [
                 { name: "Akauntme", href: "https://akauntme.com" },
-                { name: "HausFinda", href: "#" },
-                { name: "VersityLearn", href: "#" },
-                { name: "LundryMan", href: "#" },
+                { name: "HausFinda", href: "https://hausfinda.com" },
+                { name: "wraitedge", href: "https://wraitedge.com" },
+                { name: "LundryLab", href: "https://lundrylab.com" },
             ]
         },
         {
@@ -65,6 +65,8 @@ const FooterWidget = () => {
                                     <li key={link.name}>
                                         <Link
                                             href={link.href}
+                                            target={link.href.startsWith('http') ? "_blank" : "_self"}
+                                            rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
                                             className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-1 inline-block"
                                         >
                                             {link.name}

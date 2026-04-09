@@ -11,8 +11,8 @@ const contactMethods = [
             </svg>
         ),
         label: 'Email',
-        value: 'hello@markokechukwu.com',
-        href: 'mailto:hello@markokechukwu.com',
+        value: 'markthavalor@gmail.com',
+        href: 'mailto:markthavalor@gmail.com',
     },
     {
         icon: (
@@ -86,7 +86,7 @@ const Contact = () => {
                             transition={{ duration: 0.6, delay: 0.25 }}
                             className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed"
                         >
-                            Have a project in mind, or just want to say hello? I&apos;d love to hear from you. 
+                            Have a project in mind, or just want to say hello? I&apos;d love to hear from you.
                             Drop a message and I&apos;ll get back to you within 24 hours.
                         </motion.p>
                     </div>

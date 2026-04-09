@@ -23,9 +23,17 @@ const HeaderWidget = () => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") setIsMobileBarOpen(false);
         };
-        if (isMobileBarOpen) window.addEventListener("keydown", handleKeyDown);
-        else window.removeEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        if (isMobileBarOpen) {
+            window.addEventListener("keydown", handleKeyDown);
+            document.body.classList.add('sidebar-open');
+        } else {
+            window.removeEventListener("keydown", handleKeyDown);
+            document.body.classList.remove('sidebar-open');
+        }
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            document.body.classList.remove('sidebar-open');
+        };
     }, [isMobileBarOpen]);
 
     const navLinks = [
@@ -69,12 +77,12 @@ const HeaderWidget = () => {
                 </div>
 
                 {/* CENTER: Nav Links */}
-                <nav className='hidden md:flex items-center justify-center gap-x-14 lg:gap-x-20'>
+                <nav className='hidden md:flex items-center justify-center gap-x-10 lg:gap-x-14'>
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`text-[0.95rem] font-medium tracking-wide transition-all duration-300 relative
+                            className={`text-[0.9rem] font-medium tracking-wide transition-all duration-300 relative
                                 ${pathname === link.href
                                     ? 'text-white'
                                     : 'text-gray-400 hover:text-white'
@@ -90,20 +98,69 @@ const HeaderWidget = () => {
                             )}
                         </Link>
                     ))}
+
+                    <button 
+                        onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+                        className="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group ml-4"
+                    >
+                        <svg className="w-4 h-4 text-gray-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <span className="text-[0.8rem] font-bold text-gray-500 group-hover:text-gray-300 tracking-tight uppercase hidden lg:block">Search</span>
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-600 font-black tracking-tighter">
+                            <span className="text-[8px]">⌘</span> K
+                        </div>
+                    </button>
                 </nav>
 
-                {/* RIGHT: Contact CTA with scribble */}
-                <div className='flex items-center'>
-                    <div className="relative group cursor-pointer" onClick={handleClick}>
-                        <svg width="110" height="44" viewBox="0 0 98 42" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            className="absolute -top-[14px] -left-[14px] min-[320px]:-left-[18px] w-[90px] min-[320px]:w-[110px] h-auto fill-blue-500 group-hover:fill-blue-400 transition-colors duration-300 group-hover:scale-105 origin-center"
-                        >
-                            <path d={SCRIBBLE_PATH} strokeWidth="2" strokeLinecap="round" />
+                {/* RIGHT: Contact CTA with cinematic border flow */}
+                <div className='flex items-center gap-4'>
+                    <button 
+                        onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+                        className="md:hidden flex items-center justify-center p-2 rounded-lg bg-white/5 border border-white/10"
+                    >
+                         <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
-                        <span className='relative z-10 text-white text-[0.85rem] min-[320px]:text-[0.95rem] font-medium tracking-wide px-2 min-[320px]:px-3 py-1'>
-                            Contact
-                        </span>
-                    </div>
+                    </button>
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative group cursor-pointer p-[1px] overflow-hidden rounded-lg"
+                        onClick={handleClick}
+                    >
+                        {/* Default Cinematic Border Flow (Blue) */}
+                        <motion.div 
+                            animate={{ rotate: 360 }}
+                            transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                            className="absolute inset-[-250%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#3b82f6_15%,transparent_30%)] group-hover:opacity-0 transition-opacity duration-500 pointer-events-none" 
+                        />
+
+                        {/* Hover Cinematic Border Flow (Pink/Purple) - Intense */}
+                        <motion.div 
+                            animate={{ rotate: 360 }}
+                            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                            className="absolute inset-[-250%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#ec4899_20%,#8b5cf6_40%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
+                        />
+
+                        {/* Solid Glass Background */}
+                        <div className="relative py-1.5 px-4 min-[320px]:px-5 bg-black/80 rounded-[7px] border border-white/10 flex items-center gap-2 group-hover:bg-black transition-colors duration-300 backdrop-blur-md">
+                             <span className='relative z-10 text-white text-[0.85rem] min-[320px]:text-[0.95rem] font-bold tracking-tight uppercase px-0.5'>
+                                Contact
+                             </span>
+                             
+                             <motion.span 
+                                className="relative z-10 text-blue-400 group-hover:text-blue-300"
+                                animate={{ x: [0, 4, 0] }}
+                                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                             >
+                                →
+                             </motion.span>
+                        </div>
+
+                        {/* Subtle Outer Glow */}
+                        <div className="absolute inset-0 bg-blue-500/10 rounded-lg blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+                    </motion.div>
                 </div>
             </div>
 

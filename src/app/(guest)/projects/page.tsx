@@ -5,51 +5,51 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { PageCover } from "@/components/general";
+import { PageCover, HolographicCardWidget, useSound } from "@/components/general";
 
 const industries = [
   {
     name: "AI",
     emoji: "🧠",
     projects: [
-      { logo: "SmartTech", valuation: "$7.2B valuation", description: "Founded by one of Rubrik's founders, Glean is one of the biggest AI companies in the world. I worked on their modern website experience — blending design precision with next-gen web performance.", link: "/project/smarttech-project-review", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop" },
+      { logo: "SmartTech", valuation: "Targetted Valuation of $7.2B on", description: "Founded by one of Rubrik's founders, Glean is one of the biggest AI companies in the world. I worked on their modern website experience — blending design precision with next-gen web performance.", link: "/project/smarttech-project-review", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop" },
     ],
   },
   {
     name: "FinTech",
     emoji: "💳",
     projects: [
-      { logo: "AkauntMe", valuation: "$900M valuation", description: "Developed the new ApexPay dashboard — a digital-first FinTech platform empowering global payments and real-time transaction analytics.", link: "/project/akauntme-project-review", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=800&fit=crop" },
+      { logo: "AkauntMe", valuation: "Targetted Valuation of $900M", description: "Developed the new ApexPay dashboard — a digital-first FinTech platform empowering global payments and real-time transaction analytics.", link: "/project/akauntme-project-review", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=800&fit=crop" },
     ],
   },
   {
     name: "Healthcare",
     emoji: "🏥",
     projects: [
-      { logo: "PharmacyPaddi", valuation: "$2.1B valuation", description: "Engineered a telemedicine system optimizing patient-doctor interaction with secure APIs, data visualization, and a seamless appointment workflow.", link: "/project/pharmacypaddi-project-review", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop" },
+      { logo: "PharmacyPaddi", valuation: "Targetted Valuation of $2.1B", description: "Engineered a telemedicine system optimizing patient-doctor interaction with secure APIs, data visualization, and a seamless appointment workflow.", link: "/project/pharmacypaddi-project-review", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop" },
     ],
   },
   {
     name: "Education",
     emoji: "📚",
     projects: [
-      { logo: "VersityLearn", valuation: "$7.2B valuation", description: "An immersive learning platform empowering students with gamified experiences and real-time progress analytics.", link: "/project/versitylearn-project-review", image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200&h=800&fit=crop" },
-      { logo: "DevBattleground", valuation: "$1B valuation", description: "Frontend competition arena where developers battle in design accuracy, precision, and creativity under time pressure.", link: "/project/devbattleground-project-review", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=800&fit=crop" },
+      { logo: "VersityLearn", valuation: "Targetted Valuation of $7.2B", description: "An immersive learning platform empowering students with gamified experiences and real-time progress analytics.", link: "/project/versitylearn-project-review", image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200&h=800&fit=crop" },
+      { logo: "DevBattleground", valuation: "Targetted Valuation of $1B", description: "Frontend competition arena where developers battle in design accuracy, precision, and creativity under time pressure.", link: "/project/devbattleground-project-review", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=800&fit=crop" },
     ],
   },
   {
     name: "Ecommerce",
     emoji: "🛒",
     projects: [
-      { logo: "MarketMe", valuation: "$500M valuation", description: "Built a performance-driven e-commerce UI for personalized shopping experiences, intelligent product recommendations, and conversion-focused design.", link: "/project/marketme-project-review", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop" },
+      { logo: "MarketMe", valuation: "Targeted Valuation of $500M", description: "Built a performance-driven e-commerce UI for personalized shopping experiences, intelligent product recommendations, and conversion-focused design.", link: "/project/marketme-project-review", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop" },
     ],
   },
   {
     name: "Welfare",
     emoji: "🏠",
     projects: [
-      { logo: "LundruMan", valuation: "$800M valuation", description: "Led frontend development for LundruMan — streamlining global laundry service workflows with intuitive dashboards and automation.", link: "/project/lundruman-project-review", image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=800&fit=crop" },
-      { logo: "HausFinda", valuation: "$800M valuation", description: "Real estate discovery platform with immersive property galleries and smart search filters.", link: "/project/lundruman-project-review", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop" },
+      { logo: "LundruMan", valuation: "Targeted Valuation of $800M", description: "Led frontend development for LundruMan — streamlining global laundry service workflows with intuitive dashboards and automation.", link: "/project/lundruman-project-review", image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=800&fit=crop" },
+      { logo: "HausFinda", valuation: "Targeted Valuation of $800M", description: "Real estate discovery platform with immersive property galleries and smart search filters.", link: "/project/lundruman-project-review", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop" },
     ],
   },
 ];
@@ -118,42 +118,47 @@ const Projects = () => {
                 transition={{ duration: 0.4 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6"
               >
-                {industries[active].projects.map((project, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    onClick={() => router.push(project.link)}
-                    className="group cursor-pointer rounded-2xl border border-white/[0.04] hover:border-white/[0.08] bg-white/[0.01] hover:bg-white/[0.02] transition-all duration-500 overflow-hidden"
-                  >
-                    {/* Image */}
-                    <div className="relative aspect-[16/9] overflow-hidden">
-                      <Image src={project.image} alt={project.logo} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 100vw, 50vw" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-xs font-medium text-white/80 border border-white/[0.08]">
-                          {industries[active].name}
-                        </span>
-                      </div>
-                    </div>
+                {industries[active].projects.map((project, idx) => {
+                  const { play } = useSound();
+                  return (
+                    <HolographicCardWidget key={idx} className="h-full">
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        onMouseEnter={() => play('hover')}
+                        onClick={() => { play('click'); router.push(project.link); }}
+                        className="group cursor-pointer h-full rounded-2xl border border-white/[0.04] hover:border-white/[0.08] bg-white/[0.01] hover:bg-white/[0.02] transition-all duration-500 overflow-hidden flex flex-col"
+                      >
+                        {/* Image */}
+                        <div className="relative aspect-[16/9] overflow-hidden">
+                          <Image src={project.image} alt={project.logo} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 100vw, 50vw" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                          <div className="absolute top-4 left-4">
+                            <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-xs font-medium text-white/80 border border-white/[0.08]">
+                              {industries[active].name}
+                            </span>
+                          </div>
+                        </div>
 
-                    {/* Content */}
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-xl font-bold text-white group-hover:text-blue-100 transition-colors">{project.logo}</h3>
-                        <span className="text-xs text-gray-500 font-medium">✴ {project.valuation}</span>
-                      </div>
-                      <p className="text-sm text-gray-400 leading-relaxed line-clamp-3 mb-5">{project.description}</p>
-                      <div className="flex items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-blue-400 transition-colors pt-4 border-t border-white/[0.04]">
-                        <span>View project</span>
-                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                        {/* Content */}
+                        <div className="p-6 flex-1 flex flex-col">
+                          <div className="flex items-center justify-between mb-3">
+                            <h3 className="text-xl font-bold text-white group-hover:text-blue-100 transition-colors">{project.logo}</h3>
+                            <span className="text-xs text-gray-500 font-medium">✴ {project.valuation}</span>
+                          </div>
+                          <p className="text-sm text-gray-400 leading-relaxed line-clamp-3 mb-5 flex-1">{project.description}</p>
+                          <div className="flex items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-blue-400 transition-colors pt-4 border-t border-white/[0.04]">
+                            <span>View project</span>
+                            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </HolographicCardWidget>
+                  );
+                })}
               </motion.div>
             </AnimatePresence>
           </div>

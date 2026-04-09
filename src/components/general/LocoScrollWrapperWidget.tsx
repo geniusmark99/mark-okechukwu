@@ -11,27 +11,33 @@ const LocoSrollWrapperWidget = ({ children }: Props) => {
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        if (typeof window === "undefined" || !scrollRef.current) return;
+        let scrollInstance: any;
 
-        // ✅ Dynamically import LocomotiveScroll ONLY on client
-        import("locomotive-scroll").then((LocomotiveScrollModule) => {
-            const LocomotiveScroll = LocomotiveScrollModule.default;
-
-            const scroll = new LocomotiveScroll({
+        const initScroll = async () => {
+            const LocomotiveScroll = (await import("locomotive-scroll")).default;
+            scrollInstance = new LocomotiveScroll({
                 lenisOptions: {
                     lerp: 0.1,
+                    duration: 1.2,
                     smoothWheel: true,
+                    wheelMultiplier: 1,
+                    touchMultiplier: 2,
+                    infinite: false,
                 },
             });
+        };
 
-            const handleResize = () => scroll.resize();
-            window.addEventListener("resize", handleResize);
+        if (typeof window !== "undefined") {
+            initScroll();
+        }
 
-            return () => {
-                scroll.destroy();
-                window.removeEventListener("resize", handleResize);
-            };
-        });
+        const handleResize = () => scrollInstance?.resize();
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            if (scrollInstance) scrollInstance.destroy();
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     return (

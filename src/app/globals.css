@@ -49,5 +49,39 @@
     --pattern-fg: #4A5565;
     --Canva-Sans: 'Canva Sans';
     --Canva-Sans-Display: 'Canva Sans Display';
+}
 
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+        scroll-behavior: smooth;
+        overscroll-behavior-y: none;
+    }
+
+    body {
+        @apply antialiased;
+        overflow-x: hidden;
+        /* Hide scrollbars but keep functionality */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* PWA Safe Area Support */
+    .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Optimize Framer Motion and GSAP performance */
+* {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.char {
+    will-change: transform, opacity;
 }
